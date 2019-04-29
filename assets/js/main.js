@@ -1,14 +1,17 @@
 $(function(){
   // Nous utiliserons les Regex (regular expression / expressions régulières), une forme syntaxique donnant des instructions sur ce que l'on veut que notre texte comporte.
-  var letters = /^[A-Za-z-]+$/;
+  var letters = /^[A-Za-zéÉàÀîÎçÇëËïêÊèÈ]+([-]?[A-Za-zéÉàÀîÎçÇëËïêÊèÈ])*$/;
   // Ici, j'indique que ma variable letters ne comportera que des lettres majuscules/minucules allant de a à z ainsi que le tiret du 6 (cf la fin).
   // Il faut toujours donner ses instructions entre les slashs "/". Le "^" indique que nous voulons ces caractères dès le début du string. Le "$" indique que nous voulons ces caractères jusqu'à la fin du string
   // Si ^ était seul, il n'aurait concerné que la première lettre. Si $ était seul, il n'aurait concerné que la dernière lettre.
   // C'est le + qui permet de dire que l'on peut placer autant de caractères que l'on veut.
-  var mail = /.*@.*/;
-  // Ici, j'indique que je veux forcément un arobase entouré de n'importe quels caractères à sa gauche et à sa droite.
-  var phone = /^[0-9]{10}$/;
-  // Ici, je ne veux QUE des chiffres. Et j'en veux précisement 10.
+  // Edit : Nous faisons en sorte que le prénom ne finisse pas par un tiret.
+  var mail = /^[a-zA-Z][a-zA-Z0-9]+([_.-]?[a-zA-Z0-9]+)@[a-zA-Z]+.[a-zA-Z]{2,5}$/;
+  // Ici, j'indique que je veux que mon premier caractère soit une lettre. Puis je veux au moins un autre caractère dans ce qui est indiqué. Puis forcément un arobase.
+  // Puis une autre chaine de caractère limitée à ce qui est indiqué. Puis un point. Puis entre 2 et 5 caractères pour le nom de domaine.
+  // On empêche l'utilisateur de finir par un caractère spécial avant le @.
+  var phone = /^0[67][0-9]{8}$/;
+  // Ici, je veux que le numéro commence par 0 et qu'il s'enchaine avec un 6 ou un 7. ensuite, nous voulons précisément 8 autres chiffres.
   $('#submit').on('click',function(){
   // ou " $('form').submit(function(){...});"
     var nameConfirmed = letters.exec($('#name').val());
@@ -18,6 +21,7 @@ $(function(){
     var phoneConfirmed = phone.exec($('#phoneNumber').val());
     if (!nameConfirmed){
     // Ici, avec le "!", je lui dis que si mes instructions regex ne sont pas respectées, alors j'applique mon alert.
+    // "!" signifie "différent de".
       alert('Attention, votre nom ne doit contenir que des lettres sans accents et des tirets.');
       $('#name').css('border', 'solid red 3px');
     }
