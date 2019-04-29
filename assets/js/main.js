@@ -15,7 +15,7 @@ $(function(){
   $('#submit').on('click',function(){
   // ou " $('form').submit(function(){...});"
     var nameConfirmed = letters.exec($('#name').val());
-  // Je formule une variable de sorte à ce qu'elle prenne la valeur du champs et que s'exécutent en celle-ci mes instructions Regex.
+    // Je formule une variable de sorte à ce qu'elle prenne la valeur du champs et que s'exécutent en celle-ci mes instructions Regex.
     var firstNameConfirmed = letters.exec($('#firstName').val());
     var mailConfirmed = mail.exec($('#mail').val());
     var phoneConfirmed = phone.exec($('#phoneNumber').val());
