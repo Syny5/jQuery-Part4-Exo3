@@ -9,13 +9,14 @@
     <h1>jQuery Saison 4 : Le retour du scripteur</h1>
     <h2>Épisode 3 : Créer un formulaire qui demande le nom, le prénom, l'adresse mail et le numéro de téléphone de l'utilisateur. Vérifier que l'adresse mail
       est bien une adresse mail, vérifier que le numéro de téléphone ne comporte que des chiffres, et que le nom et le prénom ne contiennent que des lettres ou des tirets.</h2>
-    <p>Veuillez saisir vos informations personnelles afin que nous puissons procéder à l'autopsie.</p>
+    <p>Veuillez saisir vos informations personnelles afin que nous puissions procéder à l'autopsie.</p>
     <div>
       <form class="" action="index.html" method="post">
-        <input type="text" class="namesType" id="name" placeholder="Nom">
-        <input type="text" class="namesType" id="firstName" placeholder="Prénom">
-        <input type="text" id="mail" placeholder="Adresse Mail">
-        <input type="text" id="phoneNumber" placeholder="Numéro de téléphone">
+        <input type="text" class="namesType" id="name" placeholder="Nom" required>
+        <input type="text" class="namesType" id="firstName" placeholder="Prénom" required>
+        <input type="email" id="mail" placeholder="Adresse Mail" required>
+        <input type="tel" id="phoneNumber" placeholder="Numéro de téléphone" required>
+<!-- Il est possile d'utiliser les attributs minlength et maxlength pour déterminer la taille de l'input en terme de nombre de caractères. Ici, nous avons déterminé cela en JS avec les Regex. -->
         <button type="button" name="button" id="submit">Valider</button>
       </form>
     </div>

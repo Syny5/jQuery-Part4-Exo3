@@ -10,6 +10,7 @@ $(function(){
   var phone = /^[0-9]{10}$/;
   // Ici, je ne veux QUE des chiffres. Et j'en veux précisement 10.
   $('#submit').on('click',function(){
+  // ou " $('form').submit(function(){...});"
     var nameConfirmed = letters.exec($('#name').val());
   // Je formule une variable de sorte à ce qu'elle prenne la valeur du champs et que s'exécutent en celle-ci mes instructions Regex.
     var firstNameConfirmed = letters.exec($('#firstName').val());
@@ -17,12 +18,12 @@ $(function(){
     var phoneConfirmed = phone.exec($('#phoneNumber').val());
     if (!nameConfirmed){
     // Ici, avec le "!", je lui dis que si mes instructions regex ne sont pas respectées, alors j'applique mon alert.
-      alert('Attention, votre nom ne doit contenir que des lettres et des tirets.');
+      alert('Attention, votre nom ne doit contenir que des lettres sans accents et des tirets.');
       $('#name').css('border', 'solid red 3px');
     }
      else if (!firstNameConfirmed){
     // Les else if sont importants. Si je n'avais mis que des if. J'aurais eu deux alert en cas d'échec. Celui de l'erreur et celui du else.
-      alert('Attention, votre prénom ne doit contenir que des lettres et des tirets.');
+      alert('Attention, votre prénom ne doit contenir que des lettres sans accents et des tirets.');
       $('#firstName').css('border', 'solid red 3px');
     }
     else if (!mailConfirmed){
@@ -34,7 +35,7 @@ $(function(){
       $('#phoneNumber').css('border', 'solid red 3px');
     }
     else {
-      alert('Vos informations ont bien été enregistrées. Merci.')
+      alert('Vos informations ont bien été enregistrées. Merci.');
     }
   });
 });
